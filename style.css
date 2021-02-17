@@ -34,4 +34,5 @@ header span:hover{
     display: flex;
     flex-direction: column;
     padding: 0.5em;
+    cursor: pointer;
 }

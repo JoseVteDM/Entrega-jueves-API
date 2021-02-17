@@ -1,15 +1,34 @@
-const renderMovies = movies => {
-    for (const movie of movies) {
-        document.querySelector('main.movies').innerHTML+=`
-        <div class = "movie">
+const getMovieHtml=movie=>{
+    return `<div class = "movie" onclick="getMovieDetailed(${movie.id})">
         <h3>${movie.title}</h3>
         <img src ="https://image.tmdb.org/t/p/w185/${movie.poster_path}" alt ="">
-    </div>
-        `
+    </div>`
+}
+
+
+
+const renderMovies = movies => {
+    document.querySelector('main.movies').innerHTML = ''
+    for (const movie of movies) {
+        document.querySelector('main.movies').innerHTML += getMovieHtml(movie)
+        
+        
 
     }
     
 }
+
+
+
+const getMovieDetailed = movie_id =>{
+    axios.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=b5138e06a3a9125b8c326498bbeae997&language=es-ES`).then(res=>{
+        const movie = res.data;
+
+    })
+    .catch(console.error)
+
+}
+
 
 const getLatestMovies = async() => {
     try { 
@@ -17,6 +36,7 @@ const getLatestMovies = async() => {
     const movies = res.data.results;
     renderMovies(movies)    
     }catch (error) {
+        console.error(error);
 
     }
 }
