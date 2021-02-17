@@ -1,0 +1,37 @@
+* {
+    margin:0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: black;
+    color: white;
+    display: flex;
+}
+
+header span { 
+    cursor: pointer;
+    padding: 0.8em;
+    margin: 0.2em;
+    background-color:rgb(58, 130, 194);
+    transition: all 0,6s;
+}
+
+
+header span:hover{
+    background-color: rgb(113, 215, 255);
+    color:black;
+}
+
+.movies{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    flex-wrap: wrap;
+
+}
+.movie{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+}
