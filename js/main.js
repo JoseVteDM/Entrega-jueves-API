@@ -1,3 +1,34 @@
+//funciones
+let valor = document.getElementById("buscador");
+let valorId = document.getElementById("buscadorID");
+
+//Recursos API
+
+let key = "be761d96072c0447097947c70d2686b6";
+
+let recurso= "search";
+
+let criterio = "movie";
+
+let base_url = `https://api.themoviedb.org/3/`;
+
+
+const call = async (url) => {
+    let res = await axios.get(url);
+    
+
+    if (res.data.results){
+        return res.data.results;
+
+    }
+    if (res.data.title){
+        return res.data;
+    }
+    
+}
+
+
+
 const getMovieHtml = movie=> {
     return `<div class = "movie" onclick="getMovieDetailed(${movie.id})">
         <h3>${movie.title}</h3>
@@ -65,7 +96,36 @@ const getPopularMovies = () => {
 
     })
     .catch(error=>console.error(error))
-}
+};
+
+
+const buscador = async () => {
+    let query = valor.value;
+    //Construccion de la URL 
+    let url = `${base_url}${recurso}/${criterio}?api_key=${key}&language=es-ES&query=${query}`; 
+    renderMovies("cargando");
+    let pelis = await call(url);
+
+
+
+    renderMovies(pelis);
+    //pintar(pelis);
+        
+};
+const buscadorID = async () => {
+    let query = valorId.value;
+    
+    //Construccion de la URL 
+    
+    let url = `${base_url}${criterio}/${query}?api_key=${key}&language=es-ES`; 
+    renderMovies("cargando");
+    let pelis = await call(url);
+
+
+    renderMovies(pelis);
+    //(pelis);
+
+};
 
 
 
@@ -148,4 +208,4 @@ const buscadorID = async () => {
 
     pintar(pelis);
         
-};
+};*/

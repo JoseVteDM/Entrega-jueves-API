@@ -8,16 +8,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
    
    
-    <script src="js/main.js" async></script>
 </head>
 <body>
     <header>
         <span onclick="getPopularMovies()">Películas populares</span>
         <span onclick="getLatestMovies()">Ultimas películas</span>
+        <input id="buscador" type="text" placeholder="titulo o palabra clave">
+        <button onclick="buscador()">Buscar</button>
+        <br>
+        <input id="buscadorID" type="text" placeholder="id">
+        <button onclick="buscadorID()">Buscar</button>
+        <br>
     </header>
     <main class = "movies">
        
 
     </main>
+    <script src="js/main.js" async></script>
 </body>
 </html>
